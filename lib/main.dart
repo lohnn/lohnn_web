@@ -87,14 +87,16 @@ class MultiPane extends StatelessWidget {
 class InformationList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildListDelegate.fixed(
-        [
-          Title(),
-          PhoneNumber(),
-          Email(),
-          Github(),
-        ],
+    return SliverSafeArea(
+      sliver: SliverList(
+        delegate: SliverChildListDelegate.fixed(
+          [
+            Title(),
+            PhoneNumber(),
+            Email(),
+            Github(),
+          ],
+        ),
       ),
     );
   }
@@ -118,10 +120,7 @@ class Title extends StatelessWidget {
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) =>
-                    AlertDialog(
-                      content: QrCode(),
-                    ),
+                builder: (context) => AlertDialog(content: QrCode()),
               );
             },
             child: Image.asset(
@@ -192,7 +191,6 @@ class QrCode extends StatelessWidget {
   }
 }
 
-
 class Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -217,10 +215,7 @@ class Content extends StatelessWidget {
           Padding(padding: EdgeInsets.only(top: 12)),
           Text(
             'Johannes Löhnn',
-            style: Theme
-                .of(context)
-                .textTheme
-                .display1,
+            style: Theme.of(context).textTheme.display1,
           ),
         ],
       ),
