@@ -118,20 +118,10 @@ class Title extends StatelessWidget {
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    content: Container(
-                      height: 400,
-                      width: 400,
-                      child: QrImage(
-                        data: vCard,
-                        version: QrVersions.auto,
-                        size: 200.0,
-                        foregroundColor: Colors.white,
-                      ),
+                builder: (context) =>
+                    AlertDialog(
+                      content: QrCode(),
                     ),
-                  );
-                },
               );
             },
             child: Image.asset(
@@ -186,6 +176,23 @@ class Github extends StatelessWidget {
   }
 }
 
+class QrCode extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 400,
+      width: 400,
+      child: QrImage(
+        data: vCard,
+        version: QrVersions.auto,
+        size: 200.0,
+        foregroundColor: Colors.white,
+      ),
+    );
+  }
+}
+
+
 class Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -210,7 +217,10 @@ class Content extends StatelessWidget {
           Padding(padding: EdgeInsets.only(top: 12)),
           Text(
             'Johannes Löhnn',
-            style: Theme.of(context).textTheme.display1,
+            style: Theme
+                .of(context)
+                .textTheme
+                .display1,
           ),
         ],
       ),
