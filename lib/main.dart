@@ -120,7 +120,10 @@ class Title extends StatelessWidget {
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) => AlertDialog(content: QrCode()),
+                builder: (context) => AlertDialog(
+                  content: QrCode(),
+                  contentPadding: EdgeInsets.all(24),
+                ),
               );
             },
             child: Image.asset(
@@ -179,13 +182,15 @@ class QrCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
-      width: 400,
-      child: QrImage(
-        data: vCard,
-        version: QrVersions.auto,
-        size: 200.0,
-        foregroundColor: Colors.white,
+      constraints: BoxConstraints(maxHeight: 400, maxWidth: 400),
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: QrImage(
+          data: vCard,
+          version: QrVersions.auto,
+          size: 400,
+          foregroundColor: Colors.white,
+        ),
       ),
     );
   }
