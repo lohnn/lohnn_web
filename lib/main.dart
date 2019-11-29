@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lohnn_web/helpers/deeplink.dart';
+import 'package:lohnn_web/static.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 void main() => runApp(MyApp());
 
@@ -113,7 +115,25 @@ class Title extends StatelessWidget {
             padding: EdgeInsets.only(left: 12),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    content: Container(
+                      height: 400,
+                      width: 400,
+                      child: QrImage(
+                        data: vCard,
+                        version: QrVersions.auto,
+                        size: 200.0,
+                        foregroundColor: Colors.white,
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
             child: Image.asset(
               "assets/icons/qrcode.png",
               width: 32,
