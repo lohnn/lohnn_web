@@ -1,4 +1,4 @@
-package com.example.public
+package se.lohnn.info
 
 import android.os.Bundle
 import io.flutter.app.FlutterActivity
