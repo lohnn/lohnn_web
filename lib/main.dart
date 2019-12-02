@@ -37,6 +37,9 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
+const _faceAlignment =
+    const Alignment(1920 / 2736, (1400 - (2961 / 2)) / (2961 / 2));
+
 class SinglePane extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -47,8 +50,8 @@ class SinglePane extends StatelessWidget {
           expandedHeight: 500,
           flexibleSpace: FlexibleSpaceBar(
             background: Image.asset(
-              "assets/images/Johannes.jpg",
-              alignment: Alignment.topCenter,
+              "assets/images/Johannes1.jpg",
+              alignment: _faceAlignment,
               fit: BoxFit.cover,
             ),
           ),
@@ -67,8 +70,8 @@ class MultiPane extends StatelessWidget {
         AspectRatio(
           aspectRatio: 1 / 1.5,
           child: Image.asset(
-            "assets/images/Johannes.jpg",
-            alignment: Alignment.center,
+            "assets/images/Johannes1.jpg",
+            alignment: _faceAlignment,
             fit: BoxFit.cover,
           ),
         ),
@@ -215,7 +218,7 @@ class Content extends StatelessWidget {
               ],
               shape: BoxShape.circle,
             ),
-            child: ClipOval(child: Image.asset("assets/images/Johannes.jpg")),
+            child: ClipOval(child: Image.asset("assets/images/Johannes1.jpg")),
           ),
           Padding(padding: EdgeInsets.only(top: 12)),
           Text(
