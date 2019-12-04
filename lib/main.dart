@@ -21,17 +21,13 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth <= constraints.maxHeight)
-                return SinglePane();
-              else
-                return MultiPane();
-            },
-          ),
-        ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth < constraints.maxHeight)
+            return SinglePane();
+          else
+            return MultiPane();
+        },
       ),
     );
   }
@@ -46,7 +42,6 @@ class SinglePane extends StatelessWidget {
     return CustomScrollView(
       slivers: <Widget>[
         SliverAppBar(
-          pinned: true,
           expandedHeight: 500,
           flexibleSpace: FlexibleSpaceBar(
             background: Image.asset(
